@@ -18,13 +18,13 @@ public class WikipediaHTMLExtractor {
 		String BASE_WIKIPEDIA_URL = "https://en.wikipedia.org/wiki/";
 	    String wurl = BASE_WIKIPEDIA_URL + URL; 
 		Document doc = Jsoup.connect(wurl).get();
-
+		
 		//Récupération des tables dans le DOM
 		Elements table = doc.getElementById("mw-content-text") //Filtres
-				.select("table:not(.navbox)")
 				.select("table:not(.autocollapse)")
 				.select("table:not(.metadata)")
-				.select("table:not(.vertical-navbox)")
+				.select("table:not([class*=navbox])") //toutes les classes qui contiennent la valeur "navbox"
+				.select(".wikitable")
 				.select(".sortable");
 		
 		
@@ -35,7 +35,7 @@ public class WikipediaHTMLExtractor {
 	    for(int i = 0; i < table.size(); i++) { 
 	    	
 	    	int nbrColonne = 0; 
-	    	
+	    		    	
 	        Element currentTable = table.get(i);
 	        Elements rows = currentTable.select("tr");
 

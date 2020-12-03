@@ -16,7 +16,8 @@ public class CSVEditor {
 			 BufferedWriter writer = Files.newBufferedWriter(Paths.get(path));
 			 CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.EXCEL);
 			 csvPrinter.printRecords(record);
-			 csvPrinter.flush();            
+			 csvPrinter.flush();  
+			 csvPrinter.close();
 		}
 
 

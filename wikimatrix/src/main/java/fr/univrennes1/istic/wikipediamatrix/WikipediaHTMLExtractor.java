@@ -67,7 +67,7 @@ public class WikipediaHTMLExtractor {
 		        //boucle sur tous les colonnes de la ligne j du tableau i 
 		        for (int k = 0; k < cols.size() ; k++) { 
 			        Element col = cols.get(k);
-			        //On ajoute l'ï¿½lï¿½ment ï¿½ notre ligne
+			        //On ajoute l'élément à notre ligne
 			        tempLine.add(col.text()); 
 			    }
 		        //On ajoute la ligne au CSV

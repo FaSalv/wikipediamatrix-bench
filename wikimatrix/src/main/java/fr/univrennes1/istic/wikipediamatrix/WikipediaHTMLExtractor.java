@@ -26,10 +26,6 @@ public class WikipediaHTMLExtractor {
 				.select("table:not([class*=navbox])") //toutes les classes qui contiennent la valeur "navbox"
 				.select(".wikitable")
 				.select(".sortable");
-		
-		
-		
-		
 
 		//boucle sur tous les tableaux sélectionné
 	    for(int i = 0; i < table.size(); i++) { 
@@ -45,7 +41,9 @@ public class WikipediaHTMLExtractor {
 			// On ajoutera les lignes du CSV au fur et à mesure du traitement
 	        ArrayList<ArrayList<String>> dataTest = new ArrayList<ArrayList<String>>();
 	        
-
+	        //ATTENTION s'il y a du rowspan = n ~> colone imbriquée; il faut récupérer le rowspan et faire n ajout 
+	    	// [attr] elements with an attribute named "attr" (with any value)
+	        
 	        //boucle sur toutes les lignes du tableau i 
 		    for (int j = 0; j < rows.size() ; j++) {
 		        Element row = rows.get(j);
@@ -57,10 +55,18 @@ public class WikipediaHTMLExtractor {
 		        //Ici je vérifie s'il y a des headers tout en m'assurant de ne pas prendre de ligne complète 
 		        if ((headers.size() != 0) & !(nbrColonne == headers.size())) {
 		        	for (int k = 0; k < headers.size() ; k++) { 
+		        		
 		        		nbrColonne = headers.size();
 				        Element col = headers.get(k);
-		        		tempLine.add(col.text()); 
-		        		
+				        
+				        String nbrRowspan = col.attr("colspan"); 
+			        	int colspanToInt = Integer.parseInt("0" + nbrRowspan);
+		        		if (colspanToInt > 0) { 
+				        	for (int m = 0; m < colspanToInt ; m++) { 
+				        		tempLine.add(col.text());
+				        	}
+				        } 
+				        tempLine.add(col.text());
 		        	}
 		        }
 
@@ -77,6 +83,8 @@ public class WikipediaHTMLExtractor {
 	    csvEditor.createCSVFile(docPath, dataTest);
 	    }
 	}
+	    
+}
+
 
 	
-}

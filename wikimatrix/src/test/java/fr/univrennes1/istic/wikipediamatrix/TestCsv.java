@@ -14,6 +14,8 @@ import org.junit.Test;
 
 public class TestCsv {
 	
+	//Faire des fonctions unitaires (test génériques qu'on peut systématiser) qu'on ajoute dans le benchmark
+	
 	WikipediaHTMLExtractor extractor = new WikipediaHTMLExtractor(); 
 	CSVEditor csvEditor = new CSVEditor(); 
 		

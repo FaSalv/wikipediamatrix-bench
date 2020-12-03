@@ -9,7 +9,7 @@ public class Main {
 		
 		WikipediaHTMLExtractor extractor = new WikipediaHTMLExtractor(); 
 		
-		extractor.extractor("Comparison_between_Esperanto_and_Ido");
+		extractor.extractor("Comparison_of_open-source_wireless_drivers");
 		//Comparison_of_digital_SLRs
 		//Comparison_between_Esperanto_and_Ido
 		//Comparison_of_file_managers

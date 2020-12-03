@@ -5,7 +5,10 @@ import static org.junit.Assert.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.Reader;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 import org.junit.Test;
 
 public class BenchTest {
@@ -17,8 +20,9 @@ public class BenchTest {
 	*  see below for more details
 	**/
 	@Test
-	public void testBenchExtractors() throws Exception {
+	public void testBenchExtractors() throws Exception {		
 		
+		// Ici on crée les fichiers où on va mettre les output et on s'assure qu'ils existent 
 		String BASE_WIKIPEDIA_URL = "https://en.wikipedia.org/wiki/";
 		// directory where CSV files are exported (HTML extractor) 
 		String outputDirHtml = "output" + File.separator + "html" + File.separator;
@@ -27,6 +31,7 @@ public class BenchTest {
 		String outputDirWikitext = "output" + File.separator + "wikitext" + File.separator;
 		assertTrue(new File(outputDirWikitext).isDirectory());
 		
+		//Ici on parse les 300 URLs
 		File file = new File("inputdata" + File.separator + "wikiurls.txt");
 		BufferedReader br = new BufferedReader(new FileReader(file));
 	    String url;
@@ -69,4 +74,12 @@ public class BenchTest {
 		return url.trim() + "-" + n + ".csv";
 	}
 
+
+	@Test
+	public void testWikipediaHTMLExtractor() throws Exception {		
+		
+		Reader in = new FileReader("./output/html/Comparison_of_digital_SLRs.csv");
+		Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
+		
+		}
 }

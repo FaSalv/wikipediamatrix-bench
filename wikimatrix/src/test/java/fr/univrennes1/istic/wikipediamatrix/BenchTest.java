@@ -74,12 +74,4 @@ public class BenchTest {
 		return url.trim() + "-" + n + ".csv";
 	}
 
-
-	@Test
-	public void testWikipediaHTMLExtractor() throws Exception {		
-		
-		Reader in = new FileReader("./output/html/Comparison_of_digital_SLRs.csv");
-		Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
-		
-		}
 }

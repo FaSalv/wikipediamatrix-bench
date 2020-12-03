@@ -14,12 +14,12 @@ public class WikipediaHTMLExtractor {
 	
 	public void extractor(String URL ) throws IOException {
 		
-		//Rï¿½cupï¿½ration du HTML ï¿½ partir de l'URL
+		//Récupération du HTML à partir de l'URL
 		String BASE_WIKIPEDIA_URL = "https://en.wikipedia.org/wiki/";
 	    String wurl = BASE_WIKIPEDIA_URL + URL; 
 		Document doc = Jsoup.connect(wurl).get();
 
-		//Rï¿½cupï¿½ration des tables dans le DOM
+		//Récupération des tables dans le DOM
 		Elements table = doc.getElementById("mw-content-text") //Filtres
 				.select("table:not(.navbox)")
 				.select("table:not(.autocollapse)")
@@ -31,7 +31,7 @@ public class WikipediaHTMLExtractor {
 		
 		
 
-		//boucle sur tous les tableaux sï¿½lectionnï¿½s 
+		//boucle sur tous les tableaux sélectionné
 	    for(int i = 0; i < table.size(); i++) { 
 	    	
 	    	int nbrColonne = 0; 
@@ -41,8 +41,8 @@ public class WikipediaHTMLExtractor {
 
 			String docPath = "./output/html/" + URL + "-" + (i+1) +".csv"; 
 
-	        //je crï¿½e un tableau dont le nombre de ligne est ï¿½gale au nombre de ligne de mon tableau HTML et reprï¿½sente le futur CSV 
-			// On ajoutera les lignes du CSV au fur et ï¿½ mesure du traitement
+	        //je crée un tableau dont le nombre de ligne est égale au nombre de ligne de mon tableau HTML et représente le futur CSV 
+			// On ajoutera les lignes du CSV au fur et à mesure du traitement
 	        ArrayList<ArrayList<String>> dataTest = new ArrayList<ArrayList<String>>();
 	        
 
@@ -54,7 +54,7 @@ public class WikipediaHTMLExtractor {
 		        Elements headers = row.select("th"); 
 		        Elements cols = row.select("td");
 		        		        
-		        //Ici je vï¿½rifie s'il y a des headers tout en m'assurant de ne pas prendre de ligne complï¿½te 
+		        //Ici je vérifie s'il y a des headers tout en m'assurant de ne pas prendre de ligne complète 
 		        if ((headers.size() != 0) & !(nbrColonne == headers.size())) {
 		        	for (int k = 0; k < headers.size() ; k++) { 
 		        		nbrColonne = headers.size();
@@ -73,7 +73,7 @@ public class WikipediaHTMLExtractor {
 		        //On ajoute la ligne au CSV
 		        dataTest.add(tempLine);  
 		    }
-		//On crï¿½e le CSV du tableau 
+		//On crée le CSV du tableau 
 	    csvEditor.createCSVFile(docPath, dataTest);
 	    }
 	}

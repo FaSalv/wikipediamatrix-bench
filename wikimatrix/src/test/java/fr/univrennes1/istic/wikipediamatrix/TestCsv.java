@@ -9,15 +9,23 @@ import java.io.Reader;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+import org.jsoup.nodes.Document;
 import org.junit.Test;
 
 public class TestCsv {
+	
+	WikipediaHTMLExtractor extractor = new WikipediaHTMLExtractor(); 
+	CSVEditor csvEditor = new CSVEditor(); 
 		
 	@Test
 	public void testWikipediaHTMLExtractor() throws Exception {		
-			
-		Reader in = new FileReader("./output/html/Comparison_of_digital_SLRs.csv");
-		Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
+		
+
+		extractor.extractor("Comparison_of_iOS_e-book_reader_software");
+		File tmpDir = new File("./output/html/Comparison_of_iOS_e-book_reader_software-1.csv");
+		boolean exists = tmpDir.exists();
 		}
 
+	
+	
 }

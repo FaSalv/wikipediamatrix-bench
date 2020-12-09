@@ -14,8 +14,6 @@ import org.junit.Test;
 
 public class TestCsv {
 	
-	//Faire des fonctions unitaires (test génériques qu'on peut systématiser) qu'on ajoute dans le benchmark
-	
 	WikipediaHTMLExtractor extractor = new WikipediaHTMLExtractor(); 
 	CSVEditor csvEditor = new CSVEditor(); 
 		
@@ -27,6 +25,20 @@ public class TestCsv {
 		boolean exists = tmpDir.exists();
 	    assertEquals(exists, true);
 		}
+	
+
+	@Test
+	public void  test404() throws Exception {		
+		
+		//La page testé n'existe pas donc aucun tableau ne doit être créé
+		extractor.extractor("Comparison_of_Axis_&_Allies_games");
+		boolean wasCreated = false; 
+		
+		File tmpDir = new File("./output/html/Comparison_of_Axis_&_Allies_games-1.csv");
+		wasCreated = tmpDir.exists();
+		
+	    assertEquals(wasCreated, false);
+	}
 	
 
 	@Test
@@ -68,6 +80,28 @@ public class TestCsv {
 		
 	    assertEquals(wasCreated, true);
 	}
+	
+	
+	@Test
+	public void  testNombreTableauxProgrammeSpatial() throws Exception {		
+		
+		int nbrTableaux = 40; 
+		extractor.extractor("Comparison_of_Asian_national_space_programs");
+		boolean wasCreated = false; 
+		
+		for(int i = 1; i < nbrTableaux+1; i++) { 
+			File tmpDir = new File("./output/html/Comparison_of_Asian_national_space_programs-" + i + ".csv");
+			wasCreated = tmpDir.exists();
+		}
+
+		if(wasCreated) {
+			File tmpDir = new File("./output/html/Comparison_of_Asian_national_space_programs-" + (nbrTableaux+1) + ".csv");
+			wasCreated = !tmpDir.exists(); //le fichier ne doit pas exister, donc on prends l'inverse du booléen 
+		}
+		
+	    assertEquals(wasCreated, true);
+	}
+	
 	
 	@Test
 	public void  testNombreTableauxLangage() throws Exception {		

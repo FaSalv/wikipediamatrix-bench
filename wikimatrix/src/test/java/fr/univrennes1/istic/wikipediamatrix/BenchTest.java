@@ -10,6 +10,9 @@ import org.junit.Test;
 
 public class BenchTest {
 	
+
+	WikipediaHTMLExtractor extractor = new WikipediaHTMLExtractor(); 
+	
 	/*
 	*  the challenge is to extract as many relevant tables as possible
 	*  and save them into CSV files  
@@ -49,7 +52,8 @@ public class BenchTest {
 	       // the *second* (if any) will be exported to a CSV file called
 	       // "Comparison_of_operating_system_kernels-2.csv"
 
-	       
+
+	       extractor.extractor(url);
 	       // TODO: the HTML extractor should save CSV files into output/HTML
 	       // see outputDirHtml 
 	       

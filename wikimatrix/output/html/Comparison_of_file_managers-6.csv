@@ -36,4 +36,4 @@ Xfm,?,?,?,?,?,?,?,?,No,?
 xplorer²,?,Yes,No,Yes,Yes,Yes,Yes,Yes,Yes[76],?
 XYplorer,Yes,Yes,Yes[77],Yes,Yes,Yes,Partial,Yes,Yes[78],Contents including subs
 ZTreeWin,?,Yes,No,Yes,Yes,Yes,No,Yes,?,Selectable: Number of entries or Size (Optional: Including subs)
-File manager,Symbolic links,Browse compressed folders,Slideshows,Shows combined Size of Selected Directories,Branch Sizes,Directory Compare,Synchronizer,Find as you type (Type-ahead find),Embedded/Integrated Terminal,"For Directories, size column shows:"
+

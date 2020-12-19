@@ -15,12 +15,13 @@ import org.junit.Test;
 public class TestCsv {
 	
 	WikipediaHTMLExtractor extractor = new WikipediaHTMLExtractor(); 
-	CSVEditor csvEditor = new CSVEditor(); 
+	CSVEditor csvEditor = new CSVEditor();
+	Statistique stats = new Statistique(); 
 		
 	@Test
 	public void testFileExists() throws Exception {		
 		
-		extractor.extractor("Comparison_of_iOS_e-book_reader_software");
+		extractor.extractor("Comparison_of_iOS_e-book_reader_software", stats);
 		File tmpDir = new File("./output/html/Comparison_of_iOS_e-book_reader_software-1.csv");
 		boolean exists = tmpDir.exists();
 	    assertEquals(exists, true);
@@ -31,7 +32,7 @@ public class TestCsv {
 	public void  test404() throws Exception {		
 		
 		//La page testé n'existe pas donc aucun tableau ne doit être créé
-		extractor.extractor("Comparison_of_Axis_&_Allies_games");
+		extractor.extractor("Comparison_of_Axis_&_Allies_games", stats);
 		boolean wasCreated = false; 
 		
 		File tmpDir = new File("./output/html/Comparison_of_Axis_&_Allies_games-1.csv");
@@ -45,7 +46,7 @@ public class TestCsv {
 	public void  testNombreTableauxEBook() throws Exception {		
 		
 		int nbrTableaux = 7; 
-		extractor.extractor("Comparison_of_iOS_e-book_reader_software");
+		extractor.extractor("Comparison_of_iOS_e-book_reader_software", stats);
 		boolean wasCreated = false; 
 		
 		for(int i = 1; i < nbrTableaux+1; i++) { 
@@ -65,7 +66,7 @@ public class TestCsv {
 	public void  testNombreTableauxCamera() throws Exception {		
 		
 		int nbrTableaux = 1; 
-		extractor.extractor("Comparison_of_digital_SLRs");
+		extractor.extractor("Comparison_of_digital_SLRs", stats);
 		boolean wasCreated = false; 
 		
 		for(int i = 1; i < nbrTableaux+1; i++) { 
@@ -86,7 +87,7 @@ public class TestCsv {
 	public void  testNombreTableauxProgrammeSpatial() throws Exception {		
 		
 		int nbrTableaux = 40; 
-		extractor.extractor("Comparison_of_Asian_national_space_programs");
+		extractor.extractor("Comparison_of_Asian_national_space_programs", stats);
 		boolean wasCreated = false; 
 		
 		for(int i = 1; i < nbrTableaux+1; i++) { 
@@ -107,7 +108,7 @@ public class TestCsv {
 	public void  testNombreTableauxLangage() throws Exception {		
 		
 		int nbrTableaux = 8; 
-		extractor.extractor("Comparison_between_Esperanto_and_Ido");
+		extractor.extractor("Comparison_between_Esperanto_and_Ido", stats);
 		boolean wasCreated = false; 
 		
 		for(int i = 1; i < nbrTableaux+1; i++) { 
@@ -127,7 +128,7 @@ public class TestCsv {
 		int nbrColonnesTrouvées = 0; 
 		int nbrColonnesVoulues = 22; 
 		String url = "Comparison_of_digital_SLRs"; 
-		extractor.extractor(url);
+		extractor.extractor(url, stats);
 		
 		Reader reader = Files.newBufferedReader(Paths.get("./output/html/Comparison_of_digital_SLRs-1.csv"));
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);
@@ -143,7 +144,7 @@ public class TestCsv {
 		int nbrLignesTrouvées = 0; 
 		int nbrLignesVoulues = 72; 
 		String url = "Comparison_of_digital_SLRs"; 
-		extractor.extractor(url);
+		extractor.extractor(url, stats);
 		
 		Reader reader = Files.newBufferedReader(Paths.get("./output/html/Comparison_of_digital_SLRs-1.csv"));
         CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT);

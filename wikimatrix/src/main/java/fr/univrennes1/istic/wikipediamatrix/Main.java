@@ -7,9 +7,11 @@ public class Main {
 	
 	public static void main(String[] args) throws IOException {
 		
+		Statistique statsMain = new Statistique(); 
+		
 		WikipediaHTMLExtractor extractor = new WikipediaHTMLExtractor(); 
 		
-		extractor.extractor("Comparison_between_Esperanto_and_Ido");
+		extractor.extractor("Comparison_of_Asian_national_space_programs", statsMain);
 		//Comparison_of_digital_SLRs
 		//Comparison_between_Esperanto_and_Ido
 		//Comparison_of_file_managers

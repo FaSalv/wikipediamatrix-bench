@@ -31,4 +31,4 @@ Xfm,?,?,?,?,?,?,?,?,?
 xplorer²,Yes,?,Yes,Yes,Yes,Yes,Yes,Yes,Yes
 XYplorer,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes[s 7]
 ZTreeWin,Yes,Yes,Yes,Partial,Partial [s 8],Yes,Yes,Yes,Yes
-File manager,File Name [D 1],File Contents [D 2],Basic metadata search [D 3],All metadata search [D 4],RegExp for Contents,Boolean (nesting levels),Fuzzy logic [D 5],Save searches [D 6],Refined searches [D 7]
+

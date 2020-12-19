@@ -10,6 +10,8 @@ import org.junit.Test;
 
 public class BenchTest {
 	
+	
+	
 
 	WikipediaHTMLExtractor extractor = new WikipediaHTMLExtractor(); 
 	
@@ -21,6 +23,8 @@ public class BenchTest {
 	**/
 	@Test
 	public void testBenchExtractors() throws Exception {		
+		
+		Statistique stats = new Statistique(); 
 		
 		// Ici on crée les fichiers où on va mettre les output et on s'assure qu'ils existent 
 		String BASE_WIKIPEDIA_URL = "https://en.wikipedia.org/wiki/";
@@ -53,7 +57,7 @@ public class BenchTest {
 	       // "Comparison_of_operating_system_kernels-2.csv"
 
 
-	       extractor.extractor(url);
+	       extractor.extractor(url, stats);
 	       // TODO: the HTML extractor should save CSV files into output/HTML
 	       // see outputDirHtml 
 	       
@@ -62,6 +66,8 @@ public class BenchTest {
 	       
 	       nurl++;	       
 	    }
+	    
+	    stats.printStatistique();
 	    
 	    br.close();	    
 	    assertEquals(nurl, 336);

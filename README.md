@@ -24,7 +24,7 @@ mvn test
 
 ## Architecture
 
-![Class diagram](imageTest)
+![Class diagram](/wikimatrixDiagram.png)
 
 ## License
 

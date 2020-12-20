@@ -2,11 +2,11 @@
 
 ## Combien de tableaux ont été extraits?
 
-Une fois le benchmark test lancé, 369 pages sont traités et 1662 tableaux ont été extraits.     
+Une fois le benchmark test lancé, 336 pages sont traités et 1662 tableaux ont été extraits.     
 
 ## Combien de colonnes, de lignes, et de cellules sont présentes dans les tableaux extraits? 
 
-Une fois que le test benchmark est fini, l'application wikimatrix a traitées 369 pages internet dont 33 mène à une erreur 404. 
+Une fois que le test benchmark est fini, l'application wikimatrix a traitées 336 pages internet dont 33 mène à une erreur 404. 
 
 Sur les 336 pages traités, 1662 tableaux ont été extraits. Ces tableaux ont en moyenne 7 colonnes. Le plus grand tableau à 37 colonnes, le plus petit en a 0. 
 
